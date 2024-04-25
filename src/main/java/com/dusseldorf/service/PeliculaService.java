@@ -72,5 +72,13 @@ public class PeliculaService {
                 .orElseThrow(()-> new PeliculaNotFoundException(id)));
     }
 
+    public List<PeliculaDTO> findPelicualByTitulo(String titulo){
+
+        return peliculaRepository.findByTitulo(titulo).map(peliculaMapper::toPelicualDTOList)
+                .orElseThrow(() -> new RuntimeException("Not found titulo"));
+
+
+    }
+
 
 }
